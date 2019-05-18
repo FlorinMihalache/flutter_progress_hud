@@ -33,7 +33,7 @@ class ProgressHUD extends StatefulWidget {
       if (progressHudState == null) {
         throw FlutterError(
             'ProgressHUD operation requested with a context that does not include a ProgressHUD.\n'
-            'The context used to show progress HUD must be that of a widget '
+            'The context used to show ProgressHUD must be that of a widget '
             'that is a descendant of a ProgressHUD widget.');
       }
       return true;
