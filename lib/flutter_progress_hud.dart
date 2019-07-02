@@ -8,6 +8,8 @@ class ProgressHUD extends StatefulWidget {
   final Widget indicatorWidget;
   final Color backgroundColor;
   final Radius backgroundRadius;
+  final Color borderColor;
+  final double borderWidth;
   final bool barrierEnabled;
   final Color barrierColor;
   final TextStyle textStyle;
@@ -19,6 +21,8 @@ class ProgressHUD extends StatefulWidget {
       this.indicatorWidget,
       this.backgroundColor = Colors.black54,
       this.backgroundRadius = const Radius.circular(8.0),
+      this.borderColor = Colors.white,
+      this.borderWidth = 0.0,
       this.barrierEnabled = true,
       this.barrierColor = Colors.black12,
       this.textStyle = const TextStyle(color: Colors.white, fontSize: 14.0),
@@ -140,9 +144,12 @@ class _ProgressHUDState extends State<ProgressHUD>
     return Container(
       padding: widget.padding,
       decoration: BoxDecoration(
-        color: widget.backgroundColor,
-        borderRadius: BorderRadius.all(widget.backgroundRadius),
-      ),
+          color: widget.backgroundColor,
+          borderRadius: BorderRadius.all(widget.backgroundRadius),
+          border: Border.all(
+            color: widget.borderColor,
+            width: widget.borderWidth,
+          )),
       child: FittedBox(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

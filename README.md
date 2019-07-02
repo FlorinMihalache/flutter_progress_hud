@@ -75,37 +75,47 @@ ProgressHUD(
         <td>Colors.white</td>
         <td>When using the default indicator widget, this is how you set its color</td>
     </tr>
-      <tr>
+    <tr>
         <td>indicatorWidget</td>
         <td>A basic CircularProgressIndicator</td>
         <td>Custom indicator widget</td>
     </tr>
-      <tr>
+    <tr>
         <td>backgroundColor</td>
         <td>Colors.black54</td>
         <td>Indicator background color</td>
     </tr>
-      <tr>
+    <tr>
         <td>backgroundRadius</td>
         <td>Radius.circular(8.0)</td>
         <td>Indicator background radius</td>
     </tr>
-      <tr>
+    <tr>
+        <td>borderColor</td>
+        <td>Colors.white</td>
+        <td>Indicator background border color</td>
+    </tr>
+    <tr>
+        <td>borderWidth</td>
+        <td>0.0</td>
+        <td>Indicator background border width</td>
+    </tr>        
+    <tr>
         <td>barrierEnabled</td>
         <td>true</td>
         <td>You can disable the modal barrier if you want to allow touches while the progress is shown</td>
     </tr>
-      <tr>
+    <tr>
         <td>barrierColor</td>
         <td>Colors.black12</td>
         <td>Color of the Barrier displayed behind the indicator</td>
     </tr>
-      <tr>
+    <tr>
         <td>textStyle</td>
         <td>TextStyle(color: Colors.white, fontSize: 14.0)</td>
         <td>TextStyle for the Text displayed below the indicator</td>
     </tr>
-      <tr>
+    <tr>
         <td>padding</td>
         <td>EdgeInsets.all(16.0)}</td>
         <td>Indicator content padding</td>

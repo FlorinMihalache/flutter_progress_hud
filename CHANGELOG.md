@@ -1,3 +1,7 @@
+## [1.0.2]
+
+* Added borderColor and borderWidth
+
 ## [1.0.1]
 
 * Updated README
