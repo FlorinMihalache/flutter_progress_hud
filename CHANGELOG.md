@@ -1,3 +1,8 @@
+## [1.0.3]
+
+* Fixed performance problem when progress hud is not visible
+* Updated deprecated method
+
 ## [1.0.2]
 
 * Added borderColor and borderWidth

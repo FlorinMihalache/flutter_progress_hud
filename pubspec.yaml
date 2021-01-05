@@ -1,7 +1,6 @@
 name: flutter_progress_hud
 description: Highly customizable modal progress indicator with fade animation.
-version: 1.0.2
-author: Florin Mihalache <contact@florinmihalache.ro>
+version: 1.0.3
 homepage: https://github.com/FlorinMihalache/flutter_progress_hud
 
 environment:

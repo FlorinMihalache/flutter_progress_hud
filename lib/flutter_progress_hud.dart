@@ -30,8 +30,7 @@ class ProgressHUD extends StatefulWidget {
       : assert(child != null);
 
   static _ProgressHUDState of(BuildContext context) {
-    final progressHudState =
-        context.ancestorStateOfType(const TypeMatcher<_ProgressHUDState>());
+    final progressHudState = context.findAncestorStateOfType<_ProgressHUDState>();
 
     assert(() {
       if (progressHudState == null) {
