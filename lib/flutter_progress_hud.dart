@@ -52,6 +52,7 @@ class ProgressHUD extends StatefulWidget {
 
 class _ProgressHUDState extends State<ProgressHUD>
     with SingleTickerProviderStateMixin {
+  bool _isShow = false;
   bool _barrierVisible = false;
   String _text;
 
@@ -59,17 +60,26 @@ class _ProgressHUDState extends State<ProgressHUD>
   Animation _animation;
 
   void show() {
-    _text = null;
-    _controller.forward();
+    setState(() {
+      _text = null;
+      _controller.forward();
+      _isShow = true;
+    });
   }
 
   void showWithText(String text) {
-    _text = text;
-    _controller.forward();
+    setState(() {
+      _text = text;
+      _controller.forward();
+      _isShow = true;
+    });
   }
 
   void dismiss() {
-    _controller.reverse();
+    setState(() {
+      _controller.reverse();
+      _isShow = false;
+    });
   }
 
   @override
@@ -116,9 +126,15 @@ class _ProgressHUDState extends State<ProgressHUD>
     return Stack(
       children: <Widget>[
         widget.child,
-        FadeTransition(
-          opacity: _animation,
-          child: Stack(children: children),
+        IgnorePointer(
+          ignoring: !_isShow,
+          child: TickerMode(
+            enabled: _isShow,
+            child: FadeTransition(
+              opacity: _animation,
+              child: Stack(children: children),
+            ),
+          ),
         ),
       ],
     );
