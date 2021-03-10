@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class ProgressHUD extends StatefulWidget {
   final Widget child;
   final Color indicatorColor;
-  final Widget indicatorWidget;
+  final Widget? indicatorWidget;
   final Color backgroundColor;
   final Radius backgroundRadius;
   final Color borderColor;
@@ -16,7 +16,7 @@ class ProgressHUD extends StatefulWidget {
   final EdgeInsetsGeometry padding;
 
   ProgressHUD(
-      {@required this.child,
+      {required this.child,
       this.indicatorColor = Colors.white,
       this.indicatorWidget,
       this.backgroundColor = Colors.black54,
@@ -26,10 +26,9 @@ class ProgressHUD extends StatefulWidget {
       this.barrierEnabled = true,
       this.barrierColor = Colors.black12,
       this.textStyle = const TextStyle(color: Colors.white, fontSize: 14.0),
-      this.padding = const EdgeInsets.all(16.0)})
-      : assert(child != null);
+      this.padding = const EdgeInsets.all(16.0)});
 
-  static _ProgressHUDState of(BuildContext context) {
+  static _ProgressHUDState? of(BuildContext context) {
     final progressHudState = context.findAncestorStateOfType<_ProgressHUDState>();
 
     assert(() {
@@ -53,10 +52,10 @@ class _ProgressHUDState extends State<ProgressHUD>
     with SingleTickerProviderStateMixin {
   bool _isShow = false;
   bool _barrierVisible = false;
-  String _text;
+  String? _text;
 
-  AnimationController _controller;
-  Animation _animation;
+  late AnimationController _controller;
+  late Animation _animation;
 
   void show() {
     setState(() {
@@ -130,7 +129,7 @@ class _ProgressHUDState extends State<ProgressHUD>
           child: TickerMode(
             enabled: _isShow,
             child: FadeTransition(
-              opacity: _animation,
+              opacity: _animation as Animation<double>,
               child: Stack(children: children),
             ),
           ),
@@ -141,16 +140,14 @@ class _ProgressHUDState extends State<ProgressHUD>
 
   Widget _buildProgress() {
     final contentChildren = <Widget>[
-      widget.indicatorWidget != null
-          ? widget.indicatorWidget
-          : _buildDefaultIndicator(),
+      widget.indicatorWidget ?? _buildDefaultIndicator()
     ];
 
-    if (_text != null && _text.isNotEmpty) {
+    if (_text != null && _text!.isNotEmpty) {
       contentChildren.addAll(<Widget>[
         SizedBox(height: 16.0),
         Text(
-          _text,
+          _text!,
           style: widget.textStyle,
         ),
       ]);

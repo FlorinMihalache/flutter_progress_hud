@@ -25,23 +25,23 @@ class MyHomePage extends StatelessWidget {
           builder: (context) => Center(
                 child: Column(
                   children: <Widget>[
-                    RaisedButton(
+                    ElevatedButton(
                       child: Text('Show for a second'),
                       onPressed: () {
                         final progress = ProgressHUD.of(context);
-                        progress.show();
+                        progress?.show();
                         Future.delayed(Duration(seconds: 1), () {
-                          progress.dismiss();
+                          progress?.dismiss();
                         });
                       },
                     ),
-                    RaisedButton(
+                    ElevatedButton(
                       child: Text('Show with text'),
                       onPressed: () {
                         final progress = ProgressHUD.of(context);
-                        progress.showWithText('Loading...');
+                        progress?.showWithText('Loading...');
                         Future.delayed(Duration(seconds: 1), () {
-                          progress.dismiss();
+                          progress?.dismiss();
                         });
                       },
                     ),
