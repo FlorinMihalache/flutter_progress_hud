@@ -58,26 +58,32 @@ class _ProgressHUDState extends State<ProgressHUD>
   late Animation _animation;
 
   void show() {
-    setState(() {
-      _text = null;
-      _controller.forward();
-      _isShow = true;
-    });
+    if (mounted) {
+      setState(() {
+        _text = null;
+        _controller.forward();
+        _isShow = true;
+      });
+    }
   }
 
   void showWithText(String text) {
-    setState(() {
-      _text = text;
-      _controller.forward();
-      _isShow = true;
-    });
+   if (mounted) {
+      setState(() {
+        _text = text;
+        _controller.forward();
+        _isShow = true;
+      });
+    }
   }
 
   void dismiss() {
-    setState(() {
-      _controller.reverse();
-      _isShow = false;
-    });
+    if (mounted) {
+      setState(() {
+        _controller.reverse();
+        _isShow = false;
+      });
+    }
   }
 
   @override
