@@ -14,6 +14,7 @@ class ProgressHUD extends StatefulWidget {
   final Color barrierColor;
   final TextStyle textStyle;
   final EdgeInsetsGeometry padding;
+  final bool barrierDismissible;
 
   ProgressHUD(
       {required this.child,
@@ -24,6 +25,7 @@ class ProgressHUD extends StatefulWidget {
       this.borderColor = Colors.white,
       this.borderWidth = 0.0,
       this.barrierEnabled = true,
+      this.barrierDismissible = true,
       this.barrierColor = Colors.black12,
       this.textStyle = const TextStyle(color: Colors.white, fontSize: 14.0),
       this.padding = const EdgeInsets.all(16.0)});
@@ -33,8 +35,7 @@ class ProgressHUD extends StatefulWidget {
 
     assert(() {
       if (progressHudState == null) {
-        throw FlutterError(
-            'ProgressHUD operation requested with a context that does not include a ProgressHUD.\n'
+        throw FlutterError('ProgressHUD operation requested with a context that does not include a ProgressHUD.\n'
             'The context used to show ProgressHUD must be that of a widget '
             'that is a descendant of a ProgressHUD widget.');
       }
@@ -48,8 +49,7 @@ class ProgressHUD extends StatefulWidget {
   _ProgressHUDState createState() => _ProgressHUDState();
 }
 
-class _ProgressHUDState extends State<ProgressHUD>
-    with SingleTickerProviderStateMixin {
+class _ProgressHUDState extends State<ProgressHUD> with SingleTickerProviderStateMixin {
   bool _isShow = false;
   bool _barrierVisible = false;
   String? _text;
@@ -114,6 +114,7 @@ class _ProgressHUDState extends State<ProgressHUD>
         Visibility(
           visible: _barrierVisible,
           child: ModalBarrier(
+            dismissible: widget.barrierDismissible,
             color: widget.barrierColor,
           ),
         ),
@@ -139,9 +140,7 @@ class _ProgressHUDState extends State<ProgressHUD>
   }
 
   Widget _buildProgress() {
-    final contentChildren = <Widget>[
-      widget.indicatorWidget ?? _buildDefaultIndicator()
-    ];
+    final contentChildren = <Widget>[widget.indicatorWidget ?? _buildDefaultIndicator()];
 
     if (_text != null && _text!.isNotEmpty) {
       contentChildren.addAll(<Widget>[
