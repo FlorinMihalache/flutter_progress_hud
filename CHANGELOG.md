@@ -1,3 +1,8 @@
+## [2.0.1]
+
+* Fixed: dismissible was true when barrier was enabled
+* Fixed: Unhandled Exception: setState() called after dispose()
+
 ## [2.0.0]
 
 * Migrated to null safety
