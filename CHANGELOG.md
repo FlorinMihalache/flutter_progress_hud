@@ -1,3 +1,7 @@
+## [2.0.2]
+
+* Changed Dart SDK version to 2.12.0
+
 ## [2.0.1]
 
 * Fixed: dismissible was true when barrier was enabled
